@@ -54,7 +54,7 @@ public class ArrayStack<E> extends AbstractStack<E> {
 
     @Override
     public boolean add(E e) {
-        stack.add(size(), e);
+        stack.add(0, e);
         return true;
     }
     

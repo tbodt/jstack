@@ -54,7 +54,7 @@ public class LinkedStack<E> extends AbstractStack<E> {
 
     @Override
     public boolean add(E e) {
-        links.addFirst(e);
+        links.add(0, e);
         return true;
     }
     
