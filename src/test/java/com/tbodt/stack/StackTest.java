@@ -27,7 +27,7 @@ public class StackTest {
 
     @Test
     public void testArrayStack() {
-        Stack<Integer> stack = new ArrayStack<>();
+        Stack<Integer> stack = new ArrayStack<Integer>();
         for (int i = 0; i <= 20; i++)
             stack.push(i);
         for (int i = 20; i >= 0; i--)
@@ -35,7 +35,7 @@ public class StackTest {
     }
     @Test
     public void testLinkedStack() {
-        Stack<Integer> stack = new LinkedStack<>();
+        Stack<Integer> stack = new LinkedStack<Integer>();
         for (int i = 0; i <= 20; i++)
             stack.push(i);
         for (int i = 20; i >= 0; i--)
