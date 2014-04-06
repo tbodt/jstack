@@ -16,6 +16,7 @@
  */
 package com.tbodt.stack;
 
+import java.util.Iterator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -30,14 +31,12 @@ public class StackTest {
         Stack<Integer> stack = new ArrayStack<Integer>();
         for (int i = 0; i <= 20; i++)
             stack.push(i);
-        for (int i = 20; i >= 0; i--)
-            assertTrue(stack.pop().equals(i));
-    }
-    @Test
-    public void testLinkedStack() {
-        Stack<Integer> stack = new LinkedStack<Integer>();
-        for (int i = 0; i <= 20; i++)
-            stack.push(i);
+        int count = 20;
+        Iterator<Integer> iter = stack.iterator();
+        while ( iter.hasNext() ) {
+            assertTrue(iter.next().intValue() == count);
+            count--;
+        }
         for (int i = 20; i >= 0; i--)
             assertTrue(stack.pop().equals(i));
     }

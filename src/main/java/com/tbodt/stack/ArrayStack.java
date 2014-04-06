@@ -16,44 +16,44 @@
  */
 package com.tbodt.stack;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.stream.IntStream;
 
 /**
  * A stack implemented with an array.
- * 
+ *
  * @param <E> the type of the elements
  * @author Theodore Dubois
  */
-public class ArrayStack<E> extends AbstractStack<E> {
+public final class ArrayStack<E> extends AbstractStack<E> implements Cloneable {
+
     private E[] elements;
     private int top;
     private static final int DEFAULT_INITIAL_CAPACITY = 10;
-    
+
     /**
      * Constructs an empty {@code ArrayStack}.
      */
     public ArrayStack() {
         this(DEFAULT_INITIAL_CAPACITY);
     }
-    
+
     /**
      * Constructs an empty {@code ArrayStack} with the given initial capacity.
-     * 
+     *
      * @param capacity the initial capacity
      */
     @SuppressWarnings("unchecked")
     public ArrayStack(int capacity) {
         elements = (E[]) new Object[capacity];
-    } 
-    
+    }
+
     /**
-     * Constructs an {@code ArrayStack} whose elements come from {@code collection}.
-     * 
-     * @param collection the collection to construct the stack from. The first 
+     * Constructs an {@code ArrayStack} whose elements come from
+     * {@code collection}.
+     *
+     * @param collection the collection to construct the stack from. The first
      * element returned by the iterator becomes the top of the stack.
      */
     public ArrayStack(Collection<E> collection) {
@@ -64,16 +64,21 @@ public class ArrayStack<E> extends AbstractStack<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            private int index;
-            
+            private int index = top;
+
             @Override
             public boolean hasNext() {
-                return index < top;
+                return index > 0;
             }
 
             @Override
             public E next() {
-                return elements[index++];
+                return elements[--index];
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException("To remove from stack, use pop");
             }
         };
     }
@@ -89,8 +94,23 @@ public class ArrayStack<E> extends AbstractStack<E> {
         if (top >= elements.length)
             elements = Arrays.copyOf(elements, top * 2 + 1);
     }
+
     @Override
     public E pop() {
-        return elements[--top];
+        E ret = elements[--top];
+        elements[top + 1] = null;
+        return ret;
+    }
+
+    @Override
+    public ArrayStack<E> clone() {
+        try {
+            @SuppressWarnings("unchecked")
+            ArrayStack<E> stack = (ArrayStack<E>) super.clone();
+            stack.elements = elements.clone();
+            return stack;
+        } catch (CloneNotSupportedException ex) {
+            throw new AssertionError(ex);
+        }
     }
 }
