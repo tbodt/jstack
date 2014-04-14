@@ -29,7 +29,6 @@ import java.util.Iterator;
  * <li>{@code Collection.iterator} to return an iterator traversing down from the top of the stack.</li>
  * <li>{@code Collection.size} to return the current size of the stack.</li>
  * </ul>
- * </p>
  * @param <E> the type of the elements
  * @author Theodore Dubois
  */
