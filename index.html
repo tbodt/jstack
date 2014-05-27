@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="JStack : A reimplementation of a Java stack data structure." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>JStack</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/tbodt/jstack">View on GitHub</a>
+
+          <h1 id="project_title">JStack</h1>
+          <h2 id="project_tagline">A reimplementation of a Java stack data structure.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/tbodt/jstack/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/tbodt/jstack/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <code>Stack</code> class in the Java library has some problems. It inherits from <code>Vector</code>, so it is very easy to insert elements into the middle of the stack:</p>
+
+<pre><code>stack.insertElementAt(new Object(), 0);
+</code></pre>
+
+<p>That would insert an <code>Object</code> at the <em>bottom</em> of the stack. Not the top, where elements are supposed to go.</p>
+
+<p>The stack in JStack doesn't work like that. It has its own inheritance hierarchy of classes, designed the same way as the rest of the Java Collections Framework. </p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">JStack maintained by <a href="https://github.com/tbodt">tbodt</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
