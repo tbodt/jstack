@@ -16,9 +16,7 @@
  */
 package com.tbodt.jstack;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * A stack implemented with an array.
@@ -80,6 +78,7 @@ public final class ArrayStack<E> extends AbstractStack<E> implements Cloneable {
             public void remove() {
                 throw new UnsupportedOperationException("To remove from stack, use pop");
             }
+
         };
     }
 
@@ -113,4 +112,5 @@ public final class ArrayStack<E> extends AbstractStack<E> implements Cloneable {
             throw new AssertionError(ex);
         }
     }
+
 }
